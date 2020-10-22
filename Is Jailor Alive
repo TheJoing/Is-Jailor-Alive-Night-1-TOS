@@ -1,0 +1,1833 @@
+import random
+
+i = 1
+JailorDeadCountdown = 0
+JailorAliveCountdown = 0
+
+while i <= 1:
+
+    TS = ["Escort", "Mayor", "Retributionist", "Transporter", "Medium"]
+    TK = ["Vigilant", "Veteran"]
+    NE = ["Witch", "Jester", "Executioner"]
+    RM_1 = ["Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Janitor", "Ambusher", "Hypnotist"]
+    RM_2 = ["Blackmailer", "Consigliere", "Consort", "Disguiser", "Forger", "Framer", "Janitor", "Ambusher", "Hypnotist"]
+    NK = ["Arsonist", "Serial_Killer", "Werewolf"]
+    Random_Town1 = ["Escort", "Mayor", "Retributionist", "Transporter", "Medium", "Veteran", "Vigilant", "Investigator", "Lookout", "Sheriff", "Spy", "Doctor", "Bodyguard"]
+    Random_Town2 = ["Escort", "Mayor", "Retributionist", "Transporter", "Medium", "Veteran", "Vigilant", "Investigator", "Lookout", "Sheriff", "Spy", "Doctor", "Bodyguard"]
+    Random_Town3 = ["Escort", "Mayor", "Retributionist", "Transporter", "Medium", "Veteran", "Vigilant", "Investigator", "Lookout", "Sheriff", "Spy", "Doctor", "Bodyguard"]
+
+    Jailor = ["TI1", "TI2", "TP", "TK", "TS", "RT1", "RT2", "RT3", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+
+    Witch = ["TI1", "TI2", "TP", "TK", "TS", "RT1", "RT2", "RT3", "GF", "MAF", "RM1", "RM2", "Jailor", "NK"]
+
+    Transporter = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "RT3", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+    Transporter_RT1 = ["Jailor", "TI1", "TI2", "TP", "TK", "TS", "RT2", "RT3", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+    Transporter_RT2 = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "TS", "RT3", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+    Transporter_RT3 = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "TS", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+
+    Escort_TS = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "RT3", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+    Escort_RT1 = ["Jailor", "TI1", "TI2", "TP", "TK", "TS", "RT2", "RT3", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+    Escort_RT2 = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "TS", "RT3", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+    Escort_RT3 = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "TS", "GF", "MAF", "RM1", "RM2", "NE", "NK"]
+
+    Consort_Roleblock = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "TS", "RT3", "NE", "NK"]
+
+    TownProtect = ["Jailor", "TI1", "TI2", "RT3", "TK", "RT1", "RT2", "TS", "GF", "MAF", "RM1", "RM2", "NE", "NK", "TP"]
+    TownProtectRT1 = ["Jailor", "TI1", "TI2", "RT3", "TK", "TP", "RT2", "TS", "GF", "MAF", "RM1", "RM2", "NE", "NK", "TP"]
+    TownProtectRT2 = ["Jailor", "TI1", "TI2", "RT3", "TK", "RT1", "TP", "TS", "GF", "MAF", "RM1", "RM2", "NE", "NK", "TP"]
+    TownProtectRT3 = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "TS", "GF", "MAF", "RM1", "RM2", "NE", "NK", "TP"]
+
+    Grandfather = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "TS", "SK", "NE", "RT3"]
+
+    SerialKiller = ["Jailor", "TI1", "TI2", "TP", "TK", "RT1", "RT2", "TS", "GF", "MAF", "RM1", "RM2", "NE", "RT3"]
+
+    Cautious = ["Yes", "No"]
+
+    SKWitch = ["NK"]
+
+    MafiaTest = ["MAF"]
+    GrandfatherWitch = ["GF"]
+
+    ConsortWitch = ["RM1"]
+    ConsortWitch1 = ["RM2"]
+
+    EscortWitch = ["TS"]
+    Escort1Witch = ["RT1"]
+    Escort2Witch = ["RT2"]
+    Escort3Witch = ["RT3"]
+
+    JailordTest = ["Jailor"]
+
+    TSWitch = ["TS"]
+    RT1TransWitch = ["RT1"]
+    RT2TransWitch = ["RT2"]
+    RT3TransWitch = ["RT3"]
+    VigilantWitch = ["TK"]
+    RT1Vigi = ["RT1"]
+    RT2Vigi = ["RT2"]
+    RT3Vigi = ["RT3"]
+
+    EscortTest = ["TP"]
+    EscortTest1 = ["RT1"]
+    EscortTest2 = ["RT2"]
+    EscortTest3 = ["RT3"]
+
+    Witch_Tru = False
+    WitchVigilant = False
+    WitchVigilant1 = False
+    WitchVigilant2 = False
+    WitchVigilant3 = False
+    WitchLastChance = False
+    isWitchUseful = False
+
+    Escort_RB = False
+    Escort_RB1 = False
+    Escort_RB2 = False
+    Escort_RB3 = False
+
+    Trans = False
+    Trans_1 = False
+    Trans_2 = False
+    Trans_3 = False
+
+    Consort_RB = False
+    Consort_RB1 = False
+
+    TownProtector = False
+    TownProtector1 = False
+    TownProtector2 = False
+    TownProtector3 = False
+
+    Serial = False
+    SK_Kill = False
+    JailorSK = False
+
+    Mafia_Attack = True
+    Mafioso_Kill = False
+
+    isJailorDead = False
+
+    TS_Chosen = random.choices(TS)
+    convertTS = [str(element) for element in TS_Chosen]
+    StringTS = "convertTS".join(convertTS)
+    print("TS is " + StringTS)
+    if "Mayor" in TS_Chosen:
+        Random_Town1.remove("Mayor")
+        Random_Town2.remove("Mayor")
+        Random_Town3.remove("Mayor")
+    elif "Retributionist" in TS_Chosen:
+        Random_Town1.remove("Retributionist")
+        Random_Town2.remove("Retributionist")
+        Random_Town3.remove("Retributionist")
+    TK_Chosen = random.choices(TK)
+    convertTK = [str(element) for element in TK_Chosen]
+    StringTK = "convertTK".join(convertTK)
+    print("TK is " + StringTK)
+    if "Veteran" in TK_Chosen:
+        Random_Town1.remove("Veteran")
+        Random_Town2.remove("Veteran")
+        Random_Town3.remove("Veteran")
+    NE_Chosen = random.choices(NE)
+    convertNE = [str(element) for element in NE_Chosen]
+    StringNE = "convertNE".join(convertNE)
+    print("NE is " + StringNE)
+    RM_1Chosen = random.choices(RM_1)
+    convertRM1 = [str(element) for element in RM_1Chosen]
+    StringRM1 = "convertRM1".join(convertRM1)
+    print("RM is " + StringRM1)
+    RM_2Chosen = random.choices(RM_2)
+    convertRM2 = [str(element) for element in RM_2Chosen]
+    StringRM2 = "convertRM2".join(convertRM2)
+    print("RM is " + StringRM2)
+    NK_Chosen = random.choices(NK)
+    convertNK = [str(element) for element in NK_Chosen]
+    StringNK = "convertNK".join(convertNK)
+    print("NK is " + StringNK)
+
+    RT1_Chosen = random.choices(Random_Town1)
+    convertRT1_Chosen = [str(element) for element in RT1_Chosen]
+    StringRT1 = "convertRT1_Chosen".join(convertRT1_Chosen)
+    print("RT is " + StringRT1)
+    if "Mayor" in RT1_Chosen:
+        Random_Town2.remove("Mayor")
+        Random_Town3.remove("Mayor")
+    elif "Retributionist" in RT1_Chosen:
+        Random_Town2.remove("Retributionist")
+        Random_Town3.remove("Retributionist")
+    elif "Veteran" in RT1_Chosen:
+        Random_Town2.remove("Veteran")
+        Random_Town3.remove("Veteran")
+    RT2_Chosen = random.choices(Random_Town2)
+    convertRT2_Chosen = [str(element) for element in RT2_Chosen]
+    StringRT2 = "convertRT2_Chosen".join(convertRT2_Chosen)
+    print("RT is " + StringRT2)
+    if "Mayor" in RT2_Chosen:
+        Random_Town3.remove("Mayor")
+    elif "Retributionist" in RT2_Chosen:
+        Random_Town3.remove("Retributionist")
+    elif "Veteran" in RT2_Chosen:
+        Random_Town3.remove("Veteran")
+
+    RT3_Chosen = random.choices(Random_Town3)
+    convertRT3_Chosen = [str(element) for element in RT3_Chosen]
+    StringRT3 = "convertRT3_Chosen".join(convertRT3_Chosen)
+    print("RT is " + StringRT3)
+
+    print("Game Starts")
+
+    Jailor_Prison = random.choices(Jailor)
+    convertJailor = [str(element) for element in Jailor_Prison]
+    StringJailor = "convertJailor".join(convertJailor)
+    print("Jailed " + StringJailor)
+
+    if "Witch" in NE_Chosen:
+        if "NE" in Jailor_Prison:
+            Witch_Tru = False
+        else:
+            Witch_Tru = True
+
+    if Witch_Tru is True:
+        Witch_Witched = random.sample(Witch, k=2)
+        convertWitch = [str(element) for element in Witch_Witched]
+        StringWitch = " and ".join(convertWitch)
+        print("Witched " + StringWitch)
+        if "Vigilant" in TK_Chosen:
+            if Witch_Witched[0] == VigilantWitch[0]:
+                WitchVigilant = True
+        if "Vigilant" in RT1_Chosen:
+            if Witch_Witched[0] == RT1Vigi[0]:
+                WitchVigilant1 = True
+        if "Vigilant" in RT2_Chosen:
+            if Witch_Witched[0] == RT2Vigi[0]:
+                WitchVigilant2 = True
+        if "Vigilant" in RT3_Chosen:
+            if Witch_Witched[0] == RT3Vigi[0]:
+                WitchVigilant3 = True
+    else:
+        Witch_Witched = 500, 10
+
+    if "Transporter" in TS_Chosen:
+        if "TS" in Jailor_Prison:
+            Trans = False
+        else:
+            Trans = True
+
+    if Trans is True:
+        TransporterTrans = random.sample(Transporter, k=2)
+        if TransporterTrans[0] == Jailor_Prison[0]:
+            TransporterTrans = 1000, 2
+            print("Can't transport on jail")
+        elif TransporterTrans[1] == Jailor_Prison[0]:
+            TransporterTrans = 1000, 2
+            print("Can't transport on jail")
+        else:
+            convertTrans = [str(element) for element in TransporterTrans]
+            StringTrans = " and ".join(convertTrans)
+            print("Transported " + StringTrans)
+    else:
+        TransporterTrans = 1000, 2
+
+    if "Transporter" in RT1_Chosen:
+        if "RT1" in Jailor_Prison:
+            Trans_1 = False
+        else:
+            Trans_1 = True
+
+    if Trans_1 is True:
+        TransporterTrans1 = random.sample(Transporter_RT1, k=2)
+        if TransporterTrans1[0] == Jailor_Prison[0]:
+            TransporterTrans1 = 1000, 2
+            print("Can't transport on jail")
+        elif TransporterTrans1[1] == Jailor_Prison[0]:
+            TransporterTrans1 = 1000, 2
+            print("Can't transport on jail")
+        else:
+            convertTrans1 = [str(element) for element in TransporterTrans1]
+            StringTrans1 = " and ".join(convertTrans1)
+            print("Transported " + StringTrans1)
+    else:
+        TransporterTrans1 = 1000, 2
+
+    if "Transporter" in RT2_Chosen:
+        if "RT2" in Jailor_Prison:
+            Trans_2 = False
+        else:
+            Trans_2 = True
+
+    if Trans_2 is True:
+        TransporterTrans2 = random.sample(Transporter_RT2, k=2)
+        if Witch_Witched[0] == RT2TransWitch[0]:
+            TransporterTrans2 = Witch_Witched
+            if TransporterTrans2[0] == Jailor_Prison[0]:
+                TransporterTrans2 = 1000, 2
+                print("Can't transport on jail")
+            elif TransporterTrans2[1] == Jailor_Prison[0]:
+                TransporterTrans2 = 1000, 2
+                print("Can't transport on jail")
+            else:
+                convertTrans2 = [str(element) for element in TransporterTrans2]
+                StringTrans2 = " and ".join(convertTrans2)
+                print("Transported " + StringTrans2)
+        if TransporterTrans2[0] == Jailor_Prison[0]:
+            TransporterTrans2 = 1000, 2
+            print("Can't transport on jail")
+        elif TransporterTrans2[1] == Jailor_Prison[0]:
+            TransporterTrans2 = 1000, 2
+            print("Can't transport on jail")
+        else:
+            convertTrans2 = [str(element) for element in TransporterTrans2]
+            StringTrans2 = " and ".join(convertTrans2)
+            print("Transported " + StringTrans2)
+    else:
+        TransporterTrans2 = 1000, 2
+
+    if "Transporter" in RT3_Chosen:
+        if "RT3" in Jailor_Prison:
+            Trans_3 = False
+        else:
+            Trans_3 = True
+
+    if Trans_3 is True:
+        TransporterTrans3 = random.sample(Transporter_RT3, k=2)
+        if Witch_Witched[0] == RT3TransWitch[0]:
+            TransporterTrans2 = Witch_Witched
+            if TransporterTrans3[0] == Jailor_Prison[0]:
+                TransporterTrans3 = 1000, 2
+                print("Can't transport on jail")
+            elif TransporterTrans3[1] == Jailor_Prison[0]:
+                TransporterTrans3 = 1000, 2
+                print("Can't transport on jail")
+            else:
+                convertTrans3 = [str(element) for element in TransporterTrans3]
+                StringTrans3 = " and ".join(convertTrans3)
+                print("Transported " + StringTrans3)
+        if TransporterTrans3[0] == Jailor_Prison[0]:
+            TransporterTrans3 = 1000, 2
+            print("Can't transport on jail")
+        elif TransporterTrans3[1] == Jailor_Prison[0]:
+            TransporterTrans3 = 1000, 2
+            print("Can't transport on jail")
+        else:
+            convertTrans3 = [str(element) for element in TransporterTrans3]
+            StringTrans3 = " and ".join(convertTrans3)
+            print("Transported " + StringTrans3)
+    else:
+        TransporterTrans3 = 1000, 2
+
+    if "Escort" in TS_Chosen:
+        if "TS" in Jailor_Prison:
+            Escort_RB = False
+        else:
+            Escort_RB = True
+
+    if Escort_RB is True:
+        Escort = random.choices(Escort_TS)
+        if Witch_Witched[0] == EscortWitch[0]:
+            Escort[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True:
+                if Escort[0] == TransporterTrans1[0]:
+                    Escort[0] = TransporterTrans1[1]
+                    convertEscort = [str(element) for element in Escort]
+                    StringEscort = "convertEscort".join(convertEscort)
+                    print("Roleblocked " + StringEscort)
+                elif Escort[0] == TransporterTrans2[0]:
+                    Escort[0] = TransporterTrans2[1]
+                    convertEscort = [str(element) for element in Escort]
+                    StringEscort = "convertEscort".join(convertEscort)
+                    print("Roleblocked " + StringEscort)
+                elif Escort[0] == TransporterTrans3[0]:
+                    Escort[0] = TransporterTrans3[1]
+                    convertEscort = [str(element) for element in Escort]
+                    StringEscort = "convertEscort".join(convertEscort)
+                    print("Roleblocked " + StringEscort)
+                elif Escort[0] == TransporterTrans1[1]:
+                    Escort[0] = TransporterTrans1[0]
+                    convertEscort = [str(element) for element in Escort]
+                    StringEscort = "convertEscort".join(convertEscort)
+                    print("Roleblocked " + StringEscort)
+                elif Escort[0] == TransporterTrans2[1]:
+                    Escort[0] = TransporterTrans2[0]
+                    convertEscort = [str(element) for element in Escort]
+                    StringEscort = "convertEscort".join(convertEscort)
+                    print("Roleblocked " + StringEscort)
+                elif Escort[0] == TransporterTrans3[1]:
+                    Escort[0] = TransporterTrans3[0]
+                    convertEscort = [str(element) for element in Escort]
+                    StringEscort = "convertEscort".join(convertEscort)
+                    print("Roleblocked " + StringEscort)
+                else:
+                    convertEscort = [str(element) for element in Escort]
+                    StringEscort = "convertEscort".join(convertEscort)
+                    print("Roleblocked " + StringEscort)
+            else:
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True:
+            if Escort[0] == TransporterTrans1[0]:
+                Escort[0] = TransporterTrans1[1]
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+            elif Escort[0] == TransporterTrans2[0]:
+                Escort[0] = TransporterTrans2[1]
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+            elif Escort[0] == TransporterTrans3[0]:
+                Escort[0] = TransporterTrans3[1]
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+            elif Escort[0] == TransporterTrans1[1]:
+                Escort[0] = TransporterTrans1[0]
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+            elif Escort[0] == TransporterTrans2[1]:
+                Escort[0] = TransporterTrans2[0]
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+            elif Escort[0] == TransporterTrans3[1]:
+                Escort[0] = TransporterTrans3[0]
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+            else:
+                convertEscort = [str(element) for element in Escort]
+                StringEscort = "convertEscort".join(convertEscort)
+                print("Roleblocked " + StringEscort)
+        else:
+            convertEscort = [str(element) for element in Escort]
+            StringEscort = "convertEscort".join(convertEscort)
+            print("Roleblocked " + StringEscort)
+    else:
+        Escort = 5
+
+    if "Escort" in RT1_Chosen:
+        if "RT1" in Jailor_Prison:
+            Escort_RB1 = False
+        else:
+            Escort_RB1 = True
+
+    if Escort_RB1 is True:
+        Escort1 = random.choices(Escort_RT1)
+        if Witch_Witched[0] == Escort1Witch[0]:
+            Escort1[0] = Witch_Witched[1]
+            if Trans is True or Trans_2 is True or Trans_3 is True:
+                if Escort1[0] == TransporterTrans[0]:
+                    Escort1[0] = TransporterTrans[1]
+                    convertEscort1 = [str(element) for element in Escort1]
+                    StringEscort1 = "convertEscort1".join(convertEscort1)
+                    print("Roleblocked " + StringEscort1)
+                elif Escort1[0] == TransporterTrans2[0]:
+                    Escort1[0] = TransporterTrans2[1]
+                    convertEscort1 = [str(element) for element in Escort1]
+                    StringEscort1 = "convertEscort1".join(convertEscort1)
+                    print("Roleblocked " + StringEscort1)
+                elif Escort1[0] == TransporterTrans3[0]:
+                    Escort1[0] = TransporterTrans3[1]
+                    convertEscort1 = [str(element) for element in Escort1]
+                    StringEscort1 = "convertEscort1".join(convertEscort1)
+                    print("Roleblocked " + StringEscort1)
+                elif Escort1[0] == TransporterTrans[1]:
+                    Escort1[0] = TransporterTrans[0]
+                    convertEscort1 = [str(element) for element in Escort1]
+                    StringEscort1 = "convertEscort1".join(convertEscort1)
+                    print("Roleblocked " + StringEscort1)
+                elif Escort1[0] == TransporterTrans2[1]:
+                    Escort1[0] = TransporterTrans2[0]
+                    convertEscort1 = [str(element) for element in Escort1]
+                    StringEscort1 = "convertEscort1".join(convertEscort1)
+                    print("Roleblocked " + StringEscort1)
+                elif Escort1[0] == TransporterTrans3[1]:
+                    Escort1[0] = TransporterTrans3[0]
+                    convertEscort1 = [str(element) for element in Escort1]
+                    StringEscort1 = "convertEscort1".join(convertEscort1)
+                    print("Roleblocked " + StringEscort1)
+                else:
+                    convertEscort1 = [str(element) for element in Escort1]
+                    StringEscort1 = "convertEscort1".join(convertEscort1)
+                    print("Roleblocked " + StringEscort1)
+            else:
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+        elif Trans is True or Trans_2 is True or Trans_3 is True:
+            if Escort1[0] == TransporterTrans[0]:
+                Escort1[0] = TransporterTrans[1]
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+            elif Escort1[0] == TransporterTrans2[0]:
+                Escort1[0] = TransporterTrans2[1]
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+            elif Escort1[0] == TransporterTrans3[0]:
+                Escort1[0] = TransporterTrans3[1]
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+            elif Escort1[0] == TransporterTrans[1]:
+                Escort1[0] = TransporterTrans[0]
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+            elif Escort1[0] == TransporterTrans2[1]:
+                Escort1[0] = TransporterTrans2[0]
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+            elif Escort1[0] == TransporterTrans3[1]:
+                Escort1[0] = TransporterTrans3[0]
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+            else:
+                convertEscort1 = [str(element) for element in Escort1]
+                StringEscort1 = "convertEscort1".join(convertEscort1)
+                print("Roleblocked " + StringEscort1)
+        else:
+            convertEscort1 = [str(element) for element in Escort1]
+            StringEscort1 = "convertEscort1".join(convertEscort1)
+            print("Roleblocked " + StringEscort1)
+    else:
+        Escort1 = 5
+
+    if "Escort" in RT2_Chosen:
+        if "RT2" in Jailor_Prison:
+            Escort_RB2 = False
+        else:
+            Escort_RB2 = True
+
+    if Escort_RB2 is True:
+        Escort2 = random.choices(Escort_RT2)
+        if Witch_Witched[0] == Escort2Witch[0]:
+            Escort2[0] = Witch_Witched[1]
+            if Trans is True or Trans_1 is True or Trans_3 is True:
+                if Escort2[0] == TransporterTrans[0]:
+                    Escort2[0] = TransporterTrans[1]
+                    convertEscort2 = [str(element) for element in Escort2]
+                    StringEscort2 = "convertEscort2".join(convertEscort2)
+                    print("Roleblocked " + StringEscort2)
+                elif Escort2[0] == TransporterTrans1[0]:
+                    Escort2[0] = TransporterTrans1[1]
+                    convertEscort2 = [str(element) for element in Escort2]
+                    StringEscort2 = "convertEscort2".join(convertEscort2)
+                    print("Roleblocked " + StringEscort2)
+                elif Escort2[0] == TransporterTrans3[0]:
+                    Escort2[0] = TransporterTrans3[1]
+                    convertEscort2 = [str(element) for element in Escort2]
+                    StringEscort2 = "convertEscort2".join(convertEscort2)
+                    print("Roleblocked " + StringEscort2)
+                elif Escort2[0] == TransporterTrans[1]:
+                    Escort2[0] = TransporterTrans[0]
+                    convertEscort2 = [str(element) for element in Escort2]
+                    StringEscort2 = "convertEscort2".join(convertEscort2)
+                    print("Roleblocked " + StringEscort2)
+                elif Escort2[0] == TransporterTrans1[1]:
+                    Escort2[0] = TransporterTrans1[0]
+                    convertEscort2 = [str(element) for element in Escort2]
+                    StringEscort2 = "convertEscort2".join(convertEscort2)
+                    print("Roleblocked " + StringEscort2)
+                elif Escort2[0] == TransporterTrans3[1]:
+                    Escort2[0] = TransporterTrans3[0]
+                    convertEscort2 = [str(element) for element in Escort2]
+                    StringEscort2 = "convertEscort2".join(convertEscort2)
+                    print("Roleblocked " + StringEscort2)
+                else:
+                    convertEscort2 = [str(element) for element in Escort2]
+                    StringEscort2 = "convertEscort2".join(convertEscort2)
+                    print("Roleblocked " + StringEscort2)
+            else:
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+        elif Trans is True or Trans_1 is True or Trans_3 is True:
+            if Escort2[0] == TransporterTrans[0]:
+                Escort2[0] = TransporterTrans[1]
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+            elif Escort2[0] == TransporterTrans1[0]:
+                Escort2[0] = TransporterTrans1[1]
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+            elif Escort2[0] == TransporterTrans3[0]:
+                Escort2[0] = TransporterTrans3[1]
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+            elif Escort2[0] == TransporterTrans[1]:
+                Escort2[0] = TransporterTrans[0]
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+            elif Escort2[0] == TransporterTrans1[1]:
+                Escort2[0] = TransporterTrans1[0]
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+            elif Escort2[0] == TransporterTrans3[1]:
+                Escort2[0] = TransporterTrans3[0]
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+            else:
+                convertEscort2 = [str(element) for element in Escort2]
+                StringEscort2 = "convertEscort2".join(convertEscort2)
+                print("Roleblocked " + StringEscort2)
+        else:
+            convertEscort2 = [str(element) for element in Escort2]
+            StringEscort2 = "convertEscort2".join(convertEscort2)
+            print("Roleblocked " + StringEscort2)
+    else:
+        Escort2 = 5
+
+    if "Escort" in RT3_Chosen:
+        if "RT3" in Jailor_Prison:
+            Escort_RB3 = False
+        else:
+            Escort_RB3 = True
+
+    if Escort_RB3 is True:
+        Escort3 = random.choices(Escort_RT3)
+        if Witch_Witched[0] == Escort3Witch[0]:
+            Escort3[0] = Witch_Witched[1]
+            if Trans is True or Trans_1 is True or Trans_2 is True:
+                if Escort3[0] == TransporterTrans[0]:
+                    Escort3[0] = TransporterTrans[1]
+                    convertEscort3 = [str(element) for element in Escort3]
+                    StringEscort3 = "convertEscort3".join(convertEscort3)
+                    print("Roleblocked " + StringEscort3)
+                elif Escort3[0] == TransporterTrans1[0]:
+                    Escort3[0] = TransporterTrans1[1]
+                    convertEscort3 = [str(element) for element in Escort3]
+                    StringEscort3 = "convertEscort3".join(convertEscort3)
+                    print("Roleblocked " + StringEscort3)
+                elif Escort3[0] == TransporterTrans2[0]:
+                    Escort3[0] = TransporterTrans2[1]
+                    convertEscort3 = [str(element) for element in Escort3]
+                    StringEscort3 = "convertEscort3".join(convertEscort3)
+                    print("Roleblocked " + StringEscort3)
+                elif Escort3[0] == TransporterTrans[1]:
+                    Escort3[0] = TransporterTrans[0]
+                    convertEscort3 = [str(element) for element in Escort3]
+                    StringEscort3 = "convertEscort3".join(convertEscort3)
+                    print("Roleblocked " + StringEscort3)
+                elif Escort3[0] == TransporterTrans1[1]:
+                    Escort3[0] = TransporterTrans1[0]
+                    convertEscort3 = [str(element) for element in Escort3]
+                    StringEscort3 = "convertEscort3".join(convertEscort3)
+                    print("Roleblocked " + StringEscort3)
+                elif Escort3[0] == TransporterTrans2[1]:
+                    Escort3[0] = TransporterTrans2[0]
+                    convertEscort3 = [str(element) for element in Escort3]
+                    StringEscort3 = "convertEscort3".join(convertEscort3)
+                    print("Roleblocked " + StringEscort3)
+                else:
+                    convertEscort3 = [str(element) for element in Escort3]
+                    StringEscort3 = "convertEscort3".join(convertEscort3)
+                    print("Roleblocked " + StringEscort3)
+            else:
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+        elif Trans is True or Trans_1 is True or Trans_2 is True:
+            if Escort3[0] == TransporterTrans[0]:
+                Escort3[0] = TransporterTrans[1]
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+            elif Escort3[0] == TransporterTrans1[0]:
+                Escort3[0] = TransporterTrans1[1]
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+            elif Escort3[0] == TransporterTrans2[0]:
+                Escort3[0] = TransporterTrans2[1]
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+            elif Escort3[0] == TransporterTrans[1]:
+                Escort3[0] = TransporterTrans[0]
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+            elif Escort3[0] == TransporterTrans1[1]:
+                Escort3[0] = TransporterTrans1[0]
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+            elif Escort3[0] == TransporterTrans2[1]:
+                Escort3[0] = TransporterTrans2[0]
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+            else:
+                convertEscort3 = [str(element) for element in Escort3]
+                StringEscort3 = "convertEscort3".join(convertEscort3)
+                print("Roleblocked " + StringEscort3)
+        else:
+            convertEscort3 = [str(element) for element in Escort3]
+            StringEscort3 = "convertEscort3".join(convertEscort3)
+            print("Roleblocked " + StringEscort3)
+    else:
+        Escort3 = 5
+
+    if "Consort" in RM_1Chosen:
+        if "RM1" in Jailor_Prison:
+            Consort_RB = False
+        else:
+            Consort_RB = True
+
+    if Consort_RB is True:
+        Consort = random.choices(Consort_Roleblock)
+        if Witch_Witched[0] == ConsortWitch[0]:
+            Consort[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if Consort[0] == TransporterTrans1[0]:
+                    Consort[0] = TransporterTrans1[1]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                elif Consort[0] == TransporterTrans2[0]:
+                    Consort[0] = TransporterTrans2[1]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                elif Consort[0] == TransporterTrans3[0]:
+                    Consort[0] = TransporterTrans3[1]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                elif Consort[0] == TransporterTrans1[1]:
+                    Consort[0] = TransporterTrans1[0]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                elif Consort[0] == TransporterTrans2[1]:
+                    Consort[0] = TransporterTrans2[0]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                elif Consort[0] == TransporterTrans3[1]:
+                    Consort[0] = TransporterTrans3[0]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                elif Consort[0] == TransporterTrans[1]:
+                    Consort[0] = TransporterTrans[0]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                elif Consort[0] == TransporterTrans[0]:
+                    Consort[0] = TransporterTrans[1]
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+                else:
+                    convertConsort = [str(element) for element in Consort]
+                    StringConsort = "convertConsort".join(convertConsort)
+                    print("Roleblocked " + StringConsort)
+            else:
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if Consort[0] == TransporterTrans1[0]:
+                Consort[0] = TransporterTrans1[1]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            elif Consort[0] == TransporterTrans2[0]:
+                Consort[0] = TransporterTrans2[1]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            elif Consort[0] == TransporterTrans3[0]:
+                Consort[0] = TransporterTrans3[1]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            elif Consort[0] == TransporterTrans1[1]:
+                Consort[0] = TransporterTrans1[0]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            elif Consort[0] == TransporterTrans2[1]:
+                Consort[0] = TransporterTrans2[0]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            elif Consort[0] == TransporterTrans3[1]:
+                Consort[0] = TransporterTrans3[0]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            elif Consort[0] == TransporterTrans[1]:
+                Consort[0] = TransporterTrans[0]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            elif Consort[0] == TransporterTrans[0]:
+                Consort[0] = TransporterTrans[1]
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+            else:
+                convertConsort = [str(element) for element in Consort]
+                StringConsort = "convertConsort".join(convertConsort)
+                print("Roleblocked " + StringConsort)
+        else:
+            convertConsort = [str(element) for element in Consort]
+            StringConsort = "convertConsort".join(convertConsort)
+            print("Roleblocked " + StringConsort)
+    else:
+        Consort = 5
+
+    if "Consort" in RM_2Chosen:
+        if "RM2" in Jailor_Prison:
+            Consort_RB1 = False
+        else:
+            Consort_RB1 = True
+
+    if Consort_RB1 is True:
+        Consort1 = random.choices(Consort_Roleblock)
+        if Witch_Witched[0] == ConsortWitch1[0]:
+            Consort1[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if Consort1[0] == TransporterTrans1[0]:
+                    Consort1[0] = TransporterTrans1[1]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                elif Consort1[0] == TransporterTrans2[0]:
+                    Consort1[0] = TransporterTrans2[1]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                elif Consort1[0] == TransporterTrans3[0]:
+                    Consort1[0] = TransporterTrans3[1]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                elif Consort1[0] == TransporterTrans1[1]:
+                    Consort1[0] = TransporterTrans1[0]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                elif Consort1[0] == TransporterTrans2[1]:
+                    Consort1[0] = TransporterTrans2[0]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                elif Consort1[0] == TransporterTrans3[1]:
+                    Consort1[0] = TransporterTrans3[0]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                elif Consort1[0] == TransporterTrans[1]:
+                    Consort1[0] = TransporterTrans[0]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                elif Consort1[0] == TransporterTrans[0]:
+                    Consort1[0] = TransporterTrans[1]
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+                else:
+                    convertConsort1 = [str(element) for element in Consort1]
+                    StringConsort1 = "convertConsort1".join(convertConsort1)
+                    print("Roleblocked " + StringConsort1)
+            else:
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if Consort1[0] == TransporterTrans1[0]:
+                Consort1[0] = TransporterTrans1[1]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            elif Consort1[0] == TransporterTrans2[0]:
+                Consort1[0] = TransporterTrans2[1]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            elif Consort1[0] == TransporterTrans3[0]:
+                Consort1[0] = TransporterTrans3[1]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            elif Consort1[0] == TransporterTrans1[1]:
+                Consort1[0] = TransporterTrans1[0]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            elif Consort1[0] == TransporterTrans2[1]:
+                Consort1[0] = TransporterTrans2[0]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            elif Consort1[0] == TransporterTrans3[1]:
+                Consort1[0] = TransporterTrans3[0]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            elif Consort1[0] == TransporterTrans[1]:
+                Consort1[0] = TransporterTrans[0]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            elif Consort1[0] == TransporterTrans[0]:
+                Consort1[0] = TransporterTrans[1]
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+            else:
+                convertConsort1 = [str(element) for element in Consort1]
+                StringConsort1 = "convertConsort1".join(convertConsort1)
+                print("Roleblocked " + StringConsort1)
+        else:
+            convertConsort1 = [str(element) for element in Consort1]
+            StringConsort1 = "convertConsort1".join(convertConsort1)
+            print("Roleblocked " + StringConsort1)
+    else:
+        Consort1 = 5
+
+    if "TP" in Jailor_Prison:
+        TownProtector = False
+    elif Escort == EscortTest:
+        TownProtector = False
+    elif Escort1 == EscortTest:
+        TownProtector = False
+    elif Escort2 == EscortTest:
+        TownProtector = False
+    elif Escort3 == EscortTest:
+        TownProtector = False
+    elif Consort == EscortTest:
+        TownProtector = False
+    elif Consort1 == EscortTest:
+        TownProtector = False
+    else:
+        TownProtector = True
+
+    if TownProtector is True:
+        TownieSave = random.choices(TownProtect)
+        if Witch_Witched[0] == EscortTest[0]:
+            TownieSave[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if TownieSave[0] == TransporterTrans1[0]:
+                    TownieSave[0] = TransporterTrans1[1]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                elif TownieSave[0] == TransporterTrans1[1]:
+                    TownieSave[0] = TransporterTrans1[0]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                elif TownieSave[0] == TransporterTrans[0]:
+                    TownieSave[0] = TransporterTrans[1]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                elif TownieSave[0] == TransporterTrans[1]:
+                    TownieSave[0] = TransporterTrans[0]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                elif TownieSave[0] == TransporterTrans2[1]:
+                    TownieSave[0] = TransporterTrans2[0]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                elif TownieSave[0] == TransporterTrans2[0]:
+                    TownieSave[0] = TransporterTrans2[1]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                elif TownieSave[0] == TransporterTrans3[1]:
+                    TownieSave[0] = TransporterTrans3[0]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                elif TownieSave[0] == TransporterTrans3[0]:
+                    TownieSave[0] = TransporterTrans3[1]
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+                else:
+                    convertTP = [str(element) for element in TownieSave]
+                    StringTP = "convertTP".join(convertTP)
+                    print("Protect " + StringTP)
+            else:
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if TownieSave[0] == TransporterTrans1[0]:
+                TownieSave[0] = TransporterTrans1[1]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            elif TownieSave[0] == TransporterTrans1[1]:
+                TownieSave[0] = TransporterTrans1[0]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            elif TownieSave[0] == TransporterTrans[0]:
+                TownieSave[0] = TransporterTrans[1]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            elif TownieSave[0] == TransporterTrans[1]:
+                TownieSave[0] = TransporterTrans[0]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            elif TownieSave[0] == TransporterTrans2[1]:
+                TownieSave[0] = TransporterTrans2[0]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            elif TownieSave[0] == TransporterTrans2[0]:
+                TownieSave[0] = TransporterTrans2[1]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            elif TownieSave[0] == TransporterTrans3[1]:
+                TownieSave[0] = TransporterTrans3[0]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            elif TownieSave[0] == TransporterTrans3[0]:
+                TownieSave[0] = TransporterTrans3[1]
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+            else:
+                convertTP = [str(element) for element in TownieSave]
+                StringTP = "convertTP".join(convertTP)
+                print("Protect " + StringTP)
+        else:
+            convertTP = [str(element) for element in TownieSave]
+            StringTP = "convertTP".join(convertTP)
+            print("Protect " + StringTP)
+    else:
+        TownieSave = 703
+
+    if "Doctor" in RT1_Chosen or "Bodyguard" in RT1_Chosen:
+        if "RT1" in Jailor_Prison:
+            TownProtector1 = False
+        elif Escort == EscortTest1:
+            TownProtector1 = False
+        elif Escort2 == EscortTest1:
+            TownProtector1 = False
+        elif Escort3 == EscortTest1:
+            TownProtector1 = False
+        elif Consort == EscortTest1:
+            TownProtector1 = False
+        elif Consort1 == EscortTest1:
+            TownProtector1 = False
+        else:
+            TownProtector1 = True
+
+    if TownProtector1 is True:
+        TownieSave1 = random.choices(TownProtectRT1)
+        if Witch_Witched[0] == EscortTest1[0]:
+            TownieSave1[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if TownieSave1[0] == TransporterTrans1[0]:
+                    TownieSave1[0] = TransporterTrans1[1]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                elif TownieSave1[0] == TransporterTrans1[1]:
+                    TownieSave1[0] = TransporterTrans1[0]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                elif TownieSave1[0] == TransporterTrans[0]:
+                    TownieSave1[0] = TransporterTrans[1]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                elif TownieSave1[0] == TransporterTrans[1]:
+                    TownieSave1[0] = TransporterTrans[0]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                elif TownieSave1[0] == TransporterTrans2[1]:
+                    TownieSave1[0] = TransporterTrans2[0]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                elif TownieSave1[0] == TransporterTrans2[0]:
+                    TownieSave1[0] = TransporterTrans2[1]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                elif TownieSave1[0] == TransporterTrans3[1]:
+                    TownieSave1[0] = TransporterTrans3[0]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                elif TownieSave1[0] == TransporterTrans3[0]:
+                    TownieSave1[0] = TransporterTrans3[1]
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+                else:
+                    convertTP1 = [str(element) for element in TownieSave1]
+                    StringTP1 = "convertTP1".join(convertTP1)
+                    print("Protect " + StringTP1)
+            else:
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if TownieSave1[0] == TransporterTrans1[0]:
+                TownieSave1[0] = TransporterTrans1[1]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            elif TownieSave1[0] == TransporterTrans1[1]:
+                TownieSave1[0] = TransporterTrans1[0]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            elif TownieSave1[0] == TransporterTrans[0]:
+                TownieSave1[0] = TransporterTrans[1]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            elif TownieSave1[0] == TransporterTrans[1]:
+                TownieSave1[0] = TransporterTrans[0]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            elif TownieSave1[0] == TransporterTrans2[1]:
+                TownieSave1[0] = TransporterTrans2[0]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            elif TownieSave1[0] == TransporterTrans2[0]:
+                TownieSave1[0] = TransporterTrans2[1]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            elif TownieSave1[0] == TransporterTrans3[1]:
+                TownieSave1[0] = TransporterTrans3[0]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            elif TownieSave1[0] == TransporterTrans3[0]:
+                TownieSave1[0] = TransporterTrans3[1]
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+            else:
+                convertTP1 = [str(element) for element in TownieSave1]
+                StringTP1 = "convertTP1".join(convertTP1)
+                print("Protect " + StringTP1)
+        else:
+            convertTP1 = [str(element) for element in TownieSave1]
+            StringTP1 = "convertTP1".join(convertTP1)
+            print("Protect " + StringTP1)
+    else:
+        TownieSave1 = 702
+
+    if "Doctor" in RT2_Chosen or "Bodyguard" in RT2_Chosen:
+        if "RT2" in Jailor_Prison:
+            TownProtector2 = False
+        elif Escort == EscortTest2:
+            TownProtector2 = False
+        elif Escort1 == EscortTest2:
+            TownProtector2 = False
+        elif Escort3 == EscortTest2:
+            TownProtector2 = False
+        elif Consort == EscortTest2:
+            TownProtector2 = False
+        elif Consort1 == EscortTest2:
+            TownProtector2 = False
+        else:
+            TownProtector2 = True
+
+    if TownProtector2 is True:
+        TownieSave2 = random.choices(TownProtectRT2)
+        if Witch_Witched[0] == EscortTest2[0]:
+            TownieSave2[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if TownieSave2[0] == TransporterTrans1[0]:
+                    TownieSave2[0] = TransporterTrans1[1]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                elif TownieSave2[0] == TransporterTrans1[1]:
+                    TownieSave2[0] = TransporterTrans1[0]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                elif TownieSave2[0] == TransporterTrans[0]:
+                    TownieSave2[0] = TransporterTrans[1]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                elif TownieSave2[0] == TransporterTrans[1]:
+                    TownieSave2[0] = TransporterTrans[0]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                elif TownieSave2[0] == TransporterTrans2[1]:
+                    TownieSave2[0] = TransporterTrans2[0]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                elif TownieSave2[0] == TransporterTrans2[0]:
+                    TownieSave2[0] = TransporterTrans2[1]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                elif TownieSave2[0] == TransporterTrans3[1]:
+                    TownieSave2[0] = TransporterTrans3[0]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                elif TownieSave2[0] == TransporterTrans3[0]:
+                    TownieSave2[0] = TransporterTrans3[1]
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+                else:
+                    convertTP2 = [str(element) for element in TownieSave2]
+                    StringTP2 = "convertTP2".join(convertTP2)
+                    print("Protect " + StringTP2)
+            else:
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if TownieSave2[0] == TransporterTrans1[0]:
+                TownieSave2[0] = TransporterTrans1[1]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            elif TownieSave2[0] == TransporterTrans1[1]:
+                TownieSave2[0] = TransporterTrans1[0]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            elif TownieSave2[0] == TransporterTrans[0]:
+                TownieSave2[0] = TransporterTrans[1]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            elif TownieSave2[0] == TransporterTrans[1]:
+                TownieSave2[0] = TransporterTrans[0]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            elif TownieSave2[0] == TransporterTrans2[1]:
+                TownieSave2[0] = TransporterTrans2[0]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            elif TownieSave2[0] == TransporterTrans2[0]:
+                TownieSave2[0] = TransporterTrans2[1]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            elif TownieSave2[0] == TransporterTrans3[1]:
+                TownieSave2[0] = TransporterTrans3[0]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            elif TownieSave2[0] == TransporterTrans3[0]:
+                TownieSave2[0] = TransporterTrans3[1]
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+            else:
+                convertTP2 = [str(element) for element in TownieSave2]
+                StringTP2 = "convertTP2".join(convertTP2)
+                print("Protect " + StringTP2)
+        else:
+            convertTP2 = [str(element) for element in TownieSave2]
+            StringTP2 = "convertTP2".join(convertTP2)
+            print("Protect " + StringTP2)
+    else:
+        TownieSave2 = 701
+
+    if "Doctor" in RT3_Chosen or "Bodyguard" in RT3_Chosen:
+        if "RT3" in Jailor_Prison:
+            TownProtector3 = False
+        elif Escort == EscortTest3:
+            TownProtector3 = False
+        elif Escort1 == EscortTest3:
+            TownProtector3 = False
+        elif Escort2 == EscortTest3:
+            TownProtector3 = False
+        elif Consort == EscortTest3:
+            TownProtector3 = False
+        elif Consort1 == EscortTest3:
+            TownProtector3 = False
+        else:
+            TownProtector3 = True
+
+    if TownProtector3 is True:
+        TownieSave3 = random.choices(TownProtectRT3)
+        if Witch_Witched[0] == EscortTest3[0]:
+            TownieSave3[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if TownieSave3[0] == TransporterTrans1[0]:
+                    TownieSave3[0] = TransporterTrans1[1]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                elif TownieSave3[0] == TransporterTrans1[1]:
+                    TownieSave3[0] = TransporterTrans1[0]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                elif TownieSave3[0] == TransporterTrans[0]:
+                    TownieSave3[0] = TransporterTrans[1]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                elif TownieSave3[0] == TransporterTrans[1]:
+                    TownieSave3[0] = TransporterTrans[0]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                elif TownieSave3[0] == TransporterTrans2[1]:
+                    TownieSave3[0] = TransporterTrans2[0]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                elif TownieSave3[0] == TransporterTrans2[0]:
+                    TownieSave3[0] = TransporterTrans2[1]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                elif TownieSave3[0] == TransporterTrans3[1]:
+                    TownieSave3[0] = TransporterTrans3[0]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                elif TownieSave3[0] == TransporterTrans3[0]:
+                    TownieSave3[0] = TransporterTrans3[1]
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+                else:
+                    convertTP3 = [str(element) for element in TownieSave3]
+                    StringTP3 = "convertTP3".join(convertTP3)
+                    print("Protect " + StringTP3)
+            else:
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if TownieSave3[0] == TransporterTrans1[0]:
+                TownieSave3[0] = TransporterTrans1[1]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            elif TownieSave3[0] == TransporterTrans1[1]:
+                TownieSave3[0] = TransporterTrans1[0]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            elif TownieSave3[0] == TransporterTrans[0]:
+                TownieSave3[0] = TransporterTrans[1]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            elif TownieSave3[0] == TransporterTrans[1]:
+                TownieSave3[0] = TransporterTrans[0]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            elif TownieSave3[0] == TransporterTrans2[1]:
+                TownieSave3[0] = TransporterTrans2[0]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            elif TownieSave3[0] == TransporterTrans2[0]:
+                TownieSave3[0] = TransporterTrans2[1]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            elif TownieSave3[0] == TransporterTrans3[1]:
+                TownieSave3[0] = TransporterTrans3[0]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            elif TownieSave3[0] == TransporterTrans3[0]:
+                TownieSave3[0] = TransporterTrans3[1]
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+            else:
+                convertTP3 = [str(element) for element in TownieSave3]
+                StringTP3 = "convertTP3".join(convertTP3)
+                print("Protect " + StringTP3)
+        else:
+            convertTP3 = [str(element) for element in TownieSave3]
+            StringTP3 = "convertTP3".join(convertTP3)
+            print("Protect " + StringTP3)
+    else:
+        TownieSave3 = 700
+
+    if "Serial_Killer" in NK_Chosen:
+        CautiousYN = random.choices(Cautious)
+        if "NK" in Jailor_Prison:
+            if "No" in CautiousYN:
+                SerialKill = JailordTest
+                Serial = False
+                JailorSK = True
+        elif Escort == SKWitch:
+            Serial = False
+        elif Escort1 == SKWitch:
+            Serial = False
+        elif Escort2 == SKWitch:
+            Serial = False
+        elif Escort3 == SKWitch:
+            Serial = False
+        elif Consort == SKWitch:
+            Serial = False
+        elif Consort1 == SKWitch:
+            Serial = False
+        else:
+            Serial = True
+
+    if Serial is True:
+        SerialKill = random.choices(SerialKiller)
+        if Witch_Witched[0] == SKWitch[0]:
+            SerialKill[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if SerialKill[0] == TransporterTrans1[0]:
+                    SerialKill[0] = TransporterTrans1[1]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                elif SerialKill[0] == TransporterTrans1[1]:
+                    SerialKill[0] = TransporterTrans1[0]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                elif SerialKill[0] == TransporterTrans[0]:
+                    SerialKill[0] = TransporterTrans[1]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                elif SerialKill[0] == TransporterTrans[1]:
+                    SerialKill[0] = TransporterTrans[0]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                elif SerialKill[0] == TransporterTrans2[1]:
+                    SerialKill[0] = TransporterTrans2[0]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                elif SerialKill[0] == TransporterTrans2[0]:
+                    SerialKill[0] = TransporterTrans2[1]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                elif SerialKill[0] == TransporterTrans3[1]:
+                    SerialKill[0] = TransporterTrans3[0]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                elif SerialKill[0] == TransporterTrans3[0]:
+                    SerialKill[0] = TransporterTrans3[1]
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+                else:
+                    convertSK = [str(element) for element in SerialKill]
+                    StringSK = "convertSK".join(convertSK)
+                    print("Tried to kill " + StringSK)
+            else:
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if SerialKill[0] == TransporterTrans1[0]:
+                SerialKill[0] = TransporterTrans1[1]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            elif SerialKill[0] == TransporterTrans1[1]:
+                SerialKill[0] = TransporterTrans1[0]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            elif SerialKill[0] == TransporterTrans[0]:
+                SerialKill[0] = TransporterTrans[1]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            elif SerialKill[0] == TransporterTrans[1]:
+                SerialKill[0] = TransporterTrans[0]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            elif SerialKill[0] == TransporterTrans2[1]:
+                SerialKill[0] = TransporterTrans2[0]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            elif SerialKill[0] == TransporterTrans2[0]:
+                SerialKill[0] = TransporterTrans2[1]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            elif SerialKill[0] == TransporterTrans3[1]:
+                SerialKill[0] = TransporterTrans3[0]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            elif SerialKill[0] == TransporterTrans3[0]:
+                SerialKill[0] = TransporterTrans3[1]
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+            else:
+                convertSK = [str(element) for element in SerialKill]
+                StringSK = "convertSK".join(convertSK)
+                print("Tried to kill " + StringSK)
+        else:
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print("Tried to kill " + StringSK)
+    else:
+        SerialKill = 2000
+
+    if Serial is True:
+        if SerialKill == TownieSave3:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        elif SerialKill == TownieSave2:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        elif SerialKill == TownieSave1:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        elif SerialKill == TownieSave:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        else:
+            SK_Kill = True
+    elif JailorSK is True:
+        if SerialKill == TownieSave3:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        elif SerialKill == TownieSave2:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        elif SerialKill == TownieSave1:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        elif SerialKill == TownieSave:
+            SK_Kill = False
+            convertSK = [str(element) for element in SerialKill]
+            StringSK = "convertSK".join(convertSK)
+            print(StringSK + " was attacked and healed")
+        else:
+            isJailorDead = True
+            SK_Kill = False
+
+    if SK_Kill is True:
+        if SerialKill == JailordTest:
+            isJailorDead = True
+
+    if "MAF" in Jailor_Prison:
+        Mafia_Attack = False
+    elif Escort == MafiaTest:
+        Mafia_Attack = False
+    elif Escort1 == MafiaTest:
+        Mafia_Attack = False
+    elif Escort2 == MafiaTest:
+        Mafia_Attack = False
+    elif Escort3 == MafiaTest:
+        Mafia_Attack = False
+
+    if Mafia_Attack is True:
+        Mafioso = random.choices(Grandfather)
+        if Witch_Witched[0] == GrandfatherWitch[0]:
+            Mafioso[0] = Witch_Witched[1]
+            if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+                if Mafioso[0] == TransporterTrans1[0]:
+                    Mafioso[0] = TransporterTrans1[1]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                elif Mafioso[0] == TransporterTrans1[1]:
+                    Mafioso[0] = TransporterTrans1[0]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                elif Mafioso[0] == TransporterTrans[0]:
+                    Mafioso[0] = TransporterTrans[1]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                elif Mafioso[0] == TransporterTrans[1]:
+                    Mafioso[0] = TransporterTrans[0]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                elif Mafioso[0] == TransporterTrans2[1]:
+                    Mafioso[0] = TransporterTrans2[0]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                elif Mafioso[0] == TransporterTrans2[0]:
+                    Mafioso[0] = TransporterTrans2[1]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                elif Mafioso[0] == TransporterTrans3[1]:
+                    Mafioso[0] = TransporterTrans3[0]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                elif Mafioso[0] == TransporterTrans3[0]:
+                    Mafioso[0] = TransporterTrans3[1]
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+                else:
+                    convertMAF = [str(element) for element in Mafioso]
+                    StringMAF = "convertMAF".join(convertMAF)
+                    print("Tried to kill " + StringMAF)
+            else:
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+        elif Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if Mafioso[0] == TransporterTrans1[0]:
+                Mafioso[0] = TransporterTrans1[1]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            elif Mafioso[0] == TransporterTrans1[1]:
+                Mafioso[0] = TransporterTrans1[0]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            elif Mafioso[0] == TransporterTrans[0]:
+                Mafioso[0] = TransporterTrans[1]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            elif Mafioso[0] == TransporterTrans[1]:
+                Mafioso[0] = TransporterTrans[0]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            elif Mafioso[0] == TransporterTrans2[1]:
+                Mafioso[0] = TransporterTrans2[0]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            elif Mafioso[0] == TransporterTrans2[0]:
+                Mafioso[0] = TransporterTrans2[1]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            elif Mafioso[0] == TransporterTrans3[1]:
+                Mafioso[0] = TransporterTrans3[0]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            elif Mafioso[0] == TransporterTrans3[0]:
+                Mafioso[0] = TransporterTrans3[1]
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+            else:
+                convertMAF = [str(element) for element in Mafioso]
+                StringMAF = "convertMAF".join(convertMAF)
+                print("Tried to kill " + StringMAF)
+        else:
+            convertMAF = [str(element) for element in Mafioso]
+            StringMAF = "convertMAF".join(convertMAF)
+            print("Tried to kill " + StringMAF)
+    else:
+        Mafioso = 8001
+
+    if Mafioso == TownieSave3:
+        Mafioso_Kill = False
+        convertMAF = [str(element) for element in Mafioso]
+        StringMAF = "convertMAF".join(convertMAF)
+        print(StringMAF + " was attacked and healed")
+    elif Mafioso == TownieSave2:
+        Mafioso_Kill = False
+        convertMAF = [str(element) for element in Mafioso]
+        StringMAF = "convertMAF".join(convertMAF)
+        print(StringMAF + " was attacked and healed")
+    elif Mafioso == TownieSave1:
+        Mafioso_Kill = False
+        convertMAF = [str(element) for element in Mafioso]
+        StringMAF = "convertMAF".join(convertMAF)
+        print(StringMAF + " was attacked and healed")
+    elif Mafioso == TownieSave:
+        Mafioso_Kill = False
+        convertMAF = [str(element) for element in Mafioso]
+        StringMAF = "convertMAF".join(convertMAF)
+        print(StringMAF + " was attacked and healed")
+    else:
+        Mafioso_Kill = True
+
+    if Mafioso_Kill is True:
+        if Mafioso == JailordTest:
+            isJailorDead = True
+            print("Mafioso killed Jailor")
+
+    if WitchVigilant is True or WitchVigilant1 is True or WitchVigilant2 is True or WitchVigilant3 is True:
+        if Trans_1 is True or Trans_2 is True or Trans_3 is True or Trans is True:
+            if Witch_Witched[1] == TransporterTrans[0]:
+                Witch_Witched[1] = TransporterTrans[1]
+            elif Witch_Witched[1] == TransporterTrans[1]:
+                Witch_Witched[1] = TransporterTrans[0]
+            elif Witch_Witched[1] == TransporterTrans1[1]:
+                Witch_Witched[1] = TransporterTrans1[0]
+            elif Witch_Witched[1] == TransporterTrans1[0]:
+                Witch_Witched[1] = TransporterTrans1[1]
+            elif Witch_Witched[1] == TransporterTrans2[0]:
+                Witch_Witched[1] = TransporterTrans2[1]
+            elif Witch_Witched[1] == TransporterTrans2[1]:
+                Witch_Witched[1] = TransporterTrans2[0]
+            elif Witch_Witched[1] == TransporterTrans3[1]:
+                Witch_Witched[1] = TransporterTrans3[0]
+            elif Witch_Witched[1] == TransporterTrans3[0]:
+                Witch_Witched[1] = TransporterTrans3[1]
+
+    if WitchVigilant is True:
+        if Witch_Witched[1] == JailordTest[0]:
+            if Escort == VigilantWitch:
+                WitchLastChance = False
+            elif Escort1 == VigilantWitch:
+                WitchLastChance = False
+            elif Escort2 == VigilantWitch:
+                WitchLastChance = False
+            elif Escort3 == VigilantWitch:
+                WitchLastChance = False
+            elif Consort == VigilantWitch:
+                WitchLastChance = False
+            elif Consort1 == VigilantWitch:
+                WitchLastChance = False
+            else:
+                WitchLastChance = True
+
+    if WitchVigilant1 is True:
+        if Witch_Witched[1] == JailordTest[0]:
+            if Escort == RT1Vigi:
+                WitchLastChance = False
+            elif Escort1 == RT1Vigi:
+                WitchLastChance = False
+            elif Escort2 == RT1Vigi:
+                WitchLastChance = False
+            elif Escort3 == RT1Vigi:
+                WitchLastChance = False
+            elif Consort == RT1Vigi:
+                WitchLastChance = False
+            elif Consort1 == RT1Vigi:
+                WitchLastChance = False
+            else:
+                WitchLastChance = True
+
+    if WitchVigilant2 is True:
+        if Witch_Witched[1] == JailordTest[0]:
+            if Escort == RT2Vigi:
+                WitchLastChance = False
+            elif Escort1 == RT2Vigi:
+                WitchLastChance = False
+            elif Escort2 == RT2Vigi:
+                WitchLastChance = False
+            elif Escort3 == RT2Vigi:
+                WitchLastChance = False
+            elif Consort == RT2Vigi:
+                WitchLastChance = False
+            elif Consort1 == RT2Vigi:
+                WitchLastChance = False
+            else:
+                WitchLastChance = True
+
+    if WitchVigilant3 is True:
+        if Witch_Witched[1] == JailordTest[0]:
+            if Escort == RT3Vigi:
+                WitchLastChance = False
+            elif Escort1 == RT3Vigi:
+                WitchLastChance = False
+            elif Escort2 == RT3Vigi:
+                WitchLastChance = False
+            elif Escort3 == RT3Vigi:
+                WitchLastChance = False
+            elif Consort == RT3Vigi:
+                WitchLastChance = False
+            elif Consort1 == RT3Vigi:
+                WitchLastChance = False
+            else:
+                WitchLastChance = True
+
+    if WitchLastChance is True:
+        if TownieSave == JailordTest:
+            isWitchUseful = False
+        if TownieSave1 == JailordTest:
+            isWitchUseful = False
+        if TownieSave2 == JailordTest:
+            isWitchUseful = False
+        if TownieSave3 == JailordTest:
+            isWitchUseful = False
+        else:
+            isWitchUseful = True
+
+    if isWitchUseful is True:
+        isJailorDead = True
+        print("Vigilant was witched and shooted the jailor")
+
+    if isJailorDead is False:
+        JailorAliveCountdown += 1
+        print("///////////////////////////")
+        print("Jailor still Alive, GG TOWN")
+        print("///////////////////////////")
+    elif isJailorDead is True:
+        JailorDeadCountdown += 1
+        print("//////////////////////////////")
+        print("Jailor died first night, SHAME")
+        print("//////////////////////////////")
+
+    i += 1
+
+realI = i-1
+
+JailorAlivePorcentagem = JailorAliveCountdown * 100 / realI
+print("Jailor Alive = " + str(JailorAlivePorcentagem) + "%")
+
+JailorDeadPorcentagem = JailorDeadCountdown * 100 / realI
+print("Jailor Dead = " + str(JailorDeadPorcentagem) + "%")
